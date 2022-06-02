@@ -4,7 +4,7 @@ A collection of Python functions that deal with prime numbers using the [Sieve o
 ```
 eratosthenes(num, file) -> list/file
 ```
-Takes an integer **num** and a single string filename **file** and prints all the prime numbers from 2 to num to file, while also returning them in list form.
+Takes an integer **num** and a single string filename **file** and writes all the prime numbers in the range 2 through num to file, while also returning them in list form.
 In the file, the numbers are one per line, while in the return statement/stdout, the primes are in a list consisting of the prime integers found.
 Due to speed and memory requirements, this function is deprecated. Use eratosthenesbool where possible.
 ```
