@@ -73,10 +73,10 @@ while cmds != 'quit':
                 for i in f.readlines():
                     exec(i)
                 print('All commands were executed successfully.')
-        except NameError:
+        except (NameError, SyntaxError) as e:
             raise Exception('Invalid filename!')
     else:
         try:
             exec(cmds); print('The command executed successfully.')
-        except NameError:
+        except (NameError, SyntaxError) as e:
             raise Exception('Invalid command!')
