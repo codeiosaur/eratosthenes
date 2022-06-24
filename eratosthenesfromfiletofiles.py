@@ -1,7 +1,6 @@
 from typing import Union
 
 def eratosthenes(num:int,file:str) -> list:
-    raise Warning('This is deprecated! Use eratosthenesbool instead where possible!')
     prime_attempts = []
     primes = []
     for i in range(2,num+1):
@@ -17,7 +16,7 @@ def eratosthenes(num:int,file:str) -> list:
 def eratosthenesbool(num:int,file: Union[str,list],debug:bool) -> list:
     assert type(num) == int, "Error: data type of num must be int!"; assert type(debug) == bool, "Error: data type of debug must be bool!"
     if type(file) == list:
-        if all(type(i) is str for i in lst) == False:
+        if all(type(i) is str for i in file) == False:
             raise TypeError("Error: all filenames in list file must be type str!")
     else:
         assert type(file) == str, "Error: data type of file must be str/list!"
@@ -73,21 +72,22 @@ def isPrime(num) -> bool:
     return True
 
 # Driver code:
-cmds = None
-while cmds != 'quit':
-    cmds = input('Please enter a command.')
-    if cmds == 'quit':
-        break
-    elif '.txt' in cmds:
-        try:
-            with open(cmds, 'r') as f:
-                for i in f.readlines():
-                    exec(i)
-                print('All commands were executed successfully.')
-        except (NameError, SyntaxError) as e:
-            raise Exception('Invalid filename!')
-    else:
-        try:
-            exec(cmds); print('The command executed successfully.')
-        except (NameError, SyntaxError) as e:
-            raise Exception('Invalid command!')
+if __name__ == 'main':
+    cmds = None
+    while cmds != 'quit':
+        cmds = input('Please enter a command.')
+        if cmds == 'quit':
+            break
+        elif '.txt' in cmds:
+            try:
+                with open(cmds, 'r') as f:
+                    for i in f.readlines():
+                        exec(i)
+                    print('All commands were executed successfully.')
+            except (NameError, SyntaxError) as e:
+                raise Exception('Invalid filename!')
+        else:
+            try:
+                exec(cmds); print('The command executed successfully.')
+            except (NameError, SyntaxError) as e:
+                raise Exception('Invalid command!')
