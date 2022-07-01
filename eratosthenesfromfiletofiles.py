@@ -13,7 +13,7 @@ def eratosthenes(num:int,file:str) -> list:
             file.write(str(primes[i]) + '\n')
     return (primes)
 
-def eratosthenesbool(num:int,file: Union[str,list],debug:bool) -> list:
+def eratosthenes_bool(num:int,file: Union[str,list],debug:bool) -> list:
     assert type(num) == int, "Error: data type of num must be int!"; assert type(debug) == bool, "Error: data type of debug must be bool!"
     if type(file) == list:
         if all(type(i) is str for i in file) == False:
@@ -57,7 +57,7 @@ def eratosthenesbool(num:int,file: Union[str,list],debug:bool) -> list:
                     exec_time = time.time() - start_time; f.write('# of primes: ' + str(length_of_file) + '\n'); f.write('Execution time: ' + str(exec_time))
         return (primes)
 
-def eratosthenesbitflip(num:int,file: list[str],debug:bool) -> list:
+def eratosthenes_bitflip(num:int,file: list[str],debug:bool) -> list:
     import bitarray
     # lines 64-69: anti-user error catching code
     # lines 70-74: actual sieve
@@ -99,7 +99,7 @@ def find_prime(num:int,length:int) -> int:
     except IndexError as e:
         raise IndexError('The prime you were accessing does not appear in the first ' + str(length) + ' #s. Please increase the length parameter.') from e
 
-def isPrime(num) -> bool:
+def is_prime(num) -> bool:
     if not isinstance(num, int):
         raise TypeError("num should be of type 'int'!")
     for i in range(2,num):
