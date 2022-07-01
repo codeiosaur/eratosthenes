@@ -20,15 +20,15 @@ eratosthenes_bitflip(num:int, file:list[str], debug:bool) -> list/file(s)
 ```
 Does the same thing as eratosthenes_bool, except that file cannot be a string and must be a list populated with string values. Also, the prime number array (before it's written to a file) is now a bitarray instead of a list populated with boolean values.(before it's written to a file) is now a bitarray instead of a list populated with boolean values.
 ```
-find_prime(num, length)
+find_prime(num, length) -> int
 ```
 Writes the first **length** primes to a file called 'test.txt'. Returns the **num**th prime if it occurs within the calculated values. If it does not occur, the function throws an exception.
 ```
-is_prime(num)
+is_prime(num) -> bool
 ```
 Takes a positive integer for num and returns True if that integer is prime. Otherwise, returns False.
 ```
-file_name_gen(folder, end, file_num)
+file_name_gen(folder, end, file_num) -> list
 ```
 Takes a string, integer and another integer for **folder**, **end** and **file_num** respectively. 
 Creates **file_num** text files and names them primes-**starting_number**-**endingnumber**.txt in **folder**. 
