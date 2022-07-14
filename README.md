@@ -39,19 +39,19 @@ To calculate the primes up to 10^11 without running out of memory:
 Steps 4 and 5 can be done through the use of a for loop.
 While this can seem convoluted, this is done intentionally to give as much granular control as possible.
 ```
-find_prime(num, length) -> int
+find_prime(num:int, length:int) -> int
 ```
 Writes the first **length** primes to a file called 'test.txt'. Returns the **num**th prime if it occurs within the calculated values. If it does not occur, the function throws an exception.
 
 ```
-is_prime(num) -> bool
+is_prime(num:int) -> bool
 ```
 Takes a positive integer for num and returns True if that integer is prime. Otherwise, returns False.
 
 ```
-file_name_gen(folder, end, file_num) -> list
+file_name_gen(folder:str, end:int, file_num:int) -> list
 ```
-Takes a string, integer and another integer for **folder**, **end** and **file_num** respectively. 
+Takes a string and two integers for **folder**, **end** and **file_num** respectively. 
 Creates **file_num** text files and names them primes-**starting_number**-**endingnumber**.txt in **folder**. 
 starting_number and ending_number are both in scientific notation.
 - The first file is primes-0.0e+00-**end/file_num**.txt. 
