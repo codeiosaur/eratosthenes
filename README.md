@@ -64,7 +64,7 @@ starting_number and ending_number are both in scientific notation.
 - The other functions have no dependencies.
 
 ## Future Plans
-Generally, I have no plans to update eratosthenes or other marked commands, but if people ask, I will deliver. I will also respond to pull requests.
+Generally, I have no plans to update eratosthenes or other explicitly deprecated commands, but if people ask, I will deliver. I will also respond to pull requests.
 **eratosthenes_bitflip** and **dd_eratosthenes** can be improved, both in execution time and ease of use. 
 Currently my plans with these two functions are to optimize execution time as much as possible (first file and I/O operations, second saving CPU time), and then packaging them into different forms. 
 These ideas for forms include a function that uses **multiprocessing**, a module on [pypi](https://pypi.org/) and a self-contained command line package executable from a standard terminal.
