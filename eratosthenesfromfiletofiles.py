@@ -92,7 +92,7 @@ def eratosthenes_bitflip(num:int,file: list[str],debug:bool) -> list:
     return (primes)
 
 def dderatosthenes(start:int, num:int,inputfile:list[str], outputfile:str) -> list: # a list of output files is not required 
-    # Optimize Lines 108-115 
+    # Optimize Lines 108-117
     # Add in-sieve sieving?
     import bitarray
     assert type(start) == int, f"Error: expected data type int for start, type {type(start)} given"; assert type(num) == int, f"Error: expected data type int for num, type {type(num)} given"
@@ -115,6 +115,17 @@ def dderatosthenes(start:int, num:int,inputfile:list[str], outputfile:str) -> li
                 for j in range(len(primes)): # NOTE: Write input number to sieve of eratosthenes. Optimize further
                     if (j+start) % content == 0:
                         primes[j] = 0
+
+    # FIXME: Fix an edge case where if start is sufficiently small and num is sufficiently large, some numbers are mistakenly identified as prime when they are actually composite. Seems to happen when start**2 < num.
+    if (start**2 <= num): # If start**2 < num, run normal sieve in addition to reading from file.
+        for i in range(len(primes)):
+            if primes[i] == 1:
+                if i == 0:
+                    for n in range((start)**2, num+1):
+                        pass # Implement edge case if the first number in the bitarray happens to be prime
+                else:
+                    for n in range((i+start)**2,num+1,i):
+                        primes[(n-start)] = 0 # TEST THIS
 
     with open(outputfile, 'w+') as f:
         for i in range(len(primes)):
@@ -175,3 +186,5 @@ if __name__ == '__main__':
                     print('All commands were executed successfully.')
             except (NameError, SyntaxError) as e:
                 raise Exception('Invalid filename!')
+
+dderatosthenes(100,10**7,['100.txt'],'100k.txt')
