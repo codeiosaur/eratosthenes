@@ -91,12 +91,19 @@ def eratosthenes_bitflip(num:int,file: list[str],debug:bool) -> list:
                 exec_time = time.time() - start_time; f.write('# of primes: ' + str(length_of_file) + '\n'); f.write('Execution time: ' + str(exec_time))
     return (primes)
 
-def dderatosthenes(start:int, num:int,inputfile:list[str], outputfile:str) -> list: # a list of output files is not required 
-    # Optimize Lines 108-117
+def dd_eratosthenes(start:int, num:int,inputfile:list[str], outputfile:str) -> list: # a list of output files is not required 
+    # Optimize Lines 107-113 and 117-124
     # Add in-sieve sieving?
     import bitarray
     assert type(start) == int, f"Error: expected data type int for start, type {type(start)} given"; assert type(num) == int, f"Error: expected data type int for num, type {type(num)} given"
     assert type(inputfile) == list, f"Error: expected data type list for inputfile, type {type(inputfile)} given"; assert type(outputfile) == str, f"Error: expected data type str for outputfile, type {type(outputfile)} given"
+    # FIXME: Fix an edge case where if start is sufficiently small and num is sufficiently large, some numbers are mistakenly identified as prime when they are actually composite. Seems to happen when start**2 < num.
+    # An assertion has been added to stop people from making the error until a fix has been found. Currently trying to fix in lines 127 through 136.
+    try:
+        assert start**2 > num
+    except AssertionError:
+        raise NotImplementedError(f'A bug fix for number ranges such as {start**2} through {num} is in progress! This is a placeholder error until a fix is found.')
+
     for name in range(len(inputfile)):
         if isinstance(inputfile[name], str) == False:
             raise TypeError(f"Error: expected data type str for all inputfile elements, type {type(inputfile[name])} given for element {name} of inputfile")
@@ -116,16 +123,16 @@ def dderatosthenes(start:int, num:int,inputfile:list[str], outputfile:str) -> li
                     if (j+start) % content == 0:
                         primes[j] = 0
 
-    # FIXME: Fix an edge case where if start is sufficiently small and num is sufficiently large, some numbers are mistakenly identified as prime when they are actually composite. Seems to happen when start**2 < num.
-    if (start**2 <= num): # If start**2 < num, run normal sieve in addition to reading from file.
-        for i in range(len(primes)):
-            if primes[i] == 1:
-                if i == 0:
-                    for n in range((start)**2, num+1):
-                        pass # Implement edge case if the first number in the bitarray happens to be prime
-                else:
-                    for n in range((i+start)**2,num+1,i):
-                        primes[(n-start)] = 0 # TEST THIS
+    # FIXME: See line 100
+    # if (start**2 <= num): # If start**2 < num, run normal sieve in addition to reading from file.
+    #     for i in range(len(primes)):
+    #         if primes[i] == 1:
+    #             if i == 0:
+    #                 for n in range((start)**2, num+1):
+    #                     pass # Implement edge case if the first number in the bitarray happens to be prime
+    #             else:
+    #                 for n in range((i+start)**2,num+1,i):
+    #                     primes[(n-start)] = 0 # TEST THIS
 
     with open(outputfile, 'w+') as f:
         for i in range(len(primes)):
@@ -186,5 +193,3 @@ if __name__ == '__main__':
                     print('All commands were executed successfully.')
             except (NameError, SyntaxError) as e:
                 raise Exception('Invalid filename!')
-
-dderatosthenes(100,10**7,['100.txt'],'100k.txt')
