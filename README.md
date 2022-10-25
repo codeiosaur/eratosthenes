@@ -69,3 +69,4 @@ Generally, I have no plans to update eratosthenes or other explicitly deprecated
 Currently my plans with these two functions are to optimize execution time as much as possible (first file and I/O operations, second saving CPU time), and then packaging them into different forms. 
 These ideas for forms include a function that uses **multiprocessing**, a module on [pypi](https://pypi.org/) and a self-contained command line package executable from a standard terminal.
 These plans are uncertain, but they are my plans for the future.
+Edit: This will likely no longer be maintained. I might edit this in the future, but I will organize this in a new repo.
