@@ -144,7 +144,7 @@ def find_prime(num:int,length:int) -> int:
     try:
         if isinstance(num, int) == False or isinstance(length, int) == False:
             raise TypeError("One of the passed parameters is not of type 'int'!")
-        list = eratosthenesbitflip(length,'test.txt',False)
+        list = eratosthenes_bitflip(length,'test.txt',False)
         return list[num]
     except IndexError as e:
         raise IndexError('The prime you were accessing does not appear in the first ' + str(length) + ' #s. Please increase the length parameter.') from e
