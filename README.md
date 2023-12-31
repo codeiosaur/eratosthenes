@@ -20,8 +20,7 @@ This function does the same thing as eratosthenes, with the following difference
 ```
 eratosthenes_bitflip(num:int, file:list[str], debug:bool) -> list/file(s)
 ```
-Does the same thing as eratosthenes_bool, except that file cannot be a string and must be a list populated with string values. Also, the prime number array (before it's written to a file) is now a bitarray instead of a list populated with boolean values.(before it's written to a file) is now a bitarray instead of a list populated with boolean values.
-
+Does the same thing as eratosthenes_bool, except that file cannot be a string and must be a list populated with string values. Also, the prime number array (before it's written to a file) is now a bitarray instead of a list populated with boolean values.
 ```
 dderatosthenes(start:int, num:int,inputfile:list[str], outputfile:str) -> list/file(s)
 ```
